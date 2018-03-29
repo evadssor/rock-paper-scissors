@@ -9,7 +9,7 @@
 	function game(){
 		let computerScore = 0;
 		let playerScore = 0;
-		while(computerScore != 5 || playerScore != 5){
+		while(computerScore != 5) || playerScore != 5)){
 			function computerPlay(){
 				let pick = Math.floor(Math.random() * 3);
 				let choice;
@@ -60,13 +60,19 @@
 
 				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`) : alert(`You lose! ${computerSelection} beats ${playerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`);
 			}
-
 			playRound(playerSelection, computerSelection);
-
 			
+			if(playerScore === 5){
+				alert("Player 1 wins!");
+				break;
+			}else if(computerScore === 5){
+				alert("Computer wins!");
+				break;
+			}
 		}
+		alert("Good Game!");
 	}
-	
+
 	game();
 
 	</script>
