@@ -56,15 +56,17 @@
 					}
 				}
 
-				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}!`) : alert(`You lose! ${computerSelection} beats ${playerSelection}!`);
 				(outcome === true) ? playerScore += 1 : computerScore += 1;
+
+				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`) : alert(`You lose! ${computerSelection} beats ${playerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`);
 			}
 
 			playRound(playerSelection, computerSelection);
 
-			alert(`Player: ${playerScore} Computer: ${computerScore}`);
+			
 		}
 	}
+	
 	game();
 
 	</script>
