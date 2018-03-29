@@ -1,10 +1,72 @@
 <html>
 <head>
 	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js" type="text/javascript"></script>
 </head>
 <body>
 	<script type="text/javascript">
 		
+	function game(){
+		let computerScore = 0;
+		let playerScore = 0;
+		while(computerScore != 5 || playerScore != 5){
+			function computerPlay(){
+				let pick = Math.floor(Math.random() * 3);
+				let choice;
+
+				switch (pick){
+					case 0:
+						choice = 'rock';;
+						break;
+					case 1:
+						choice = 'paper';
+						break;
+					case 2:
+						choice = 'scissor';
+						break;
+				}
+				return choice;
+			}
+
+			const computerSelection = computerPlay();
+			const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+
+			function playRound(playerSelection, computerSelection){
+				let outcome;
+
+				if(playerSelection === computerSelection){
+					return alert("It's a draw!");
+				}else if(playerSelection === 'rock'){
+					if(computerSelection === 'paper'){
+						outcome	= false;
+					}else if(computerSelection === 'scissors'){
+						outocme	= true;
+					}
+				}else if(playerSelection === 'paper'){
+					if(computerSelection === 'rock'){
+						outcome = true;
+					}else if(computerSelection === 'scissors'){
+						outcome = false;
+					}
+				}else if(playerSelection === 'scissors'){
+					if(computerSelection === 'paper'){
+						outcome = true;
+					}else if(computerSelection === 'rock'){
+						outcome = false;
+					}
+				}
+
+				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}!`) : alert(`You lose! ${computerSelection} beats ${playerSelection}!`);
+				(outcome === true) ? playerScore += 1 : computerScore += 1;
+			}
+
+			playRound(playerSelection, computerSelection);
+
+			alert(`Player: ${playerScore} Computer: ${computerScore}`);
+		}
+	}
+	game();
+
 	</script>
 </body>
 </html>
