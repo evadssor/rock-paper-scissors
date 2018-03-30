@@ -33,13 +33,13 @@ The Odin Project
 						choice = 'paper';
 						break;
 					case 2:
-						choice = 'scissor';
+						choice = 'scissors';
 						break;
 				}
 				return choice;
 			}
 
-			const computerSelection = 'scissors';
+			const computerSelection = computerPlay();
 			let playerSelection = prompt(`Round ${round}\n\nRock, Paper or Scissors?`).toLowerCase();
 
 			if(playerSelection.slice(playerSelection.length - 1) === " "){
