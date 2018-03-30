@@ -1,3 +1,11 @@
+<!-- 
+Author: Dave Ross
+Date: 3/29/2018
+Title: Rock Paper Scissors
+The Odin Project -
+-->
+
+
 <html>
 <head>
 	<title></title>
@@ -9,7 +17,9 @@
 	function game(){
 		let computerScore = 0;
 		let playerScore = 0;
-		while( !(computerScore === 5 || playerScore === 5)){
+		let round = 1;
+
+		while( !(round === 5 || playerScore === 3 || computerScore === 3) ){
 			console.log(computerScore);
 			function computerPlay(){
 				let pick = Math.floor(Math.random() * 3);
@@ -30,7 +40,7 @@
 			}
 
 			const computerSelection = 'scissors';
-			let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+			let playerSelection = prompt(`Round ${round}\n\nRock, Paper or Scissors?`).toLowerCase();
 
 			if(playerSelection.slice(playerSelection.length - 1) === " "){
 				playerSelection = playerSelection.substr(0, playerSelection.length - 1);
@@ -65,13 +75,14 @@
 
 				(outcome === true) ? playerScore += 1 : computerScore += 1;
 
-				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`) : alert(`You lose! ${computerSelection} beats ${playerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`);
+				(outcome === true) ? (alert(`Round ${round}\n\nYou win! ${playerSelection} beats ${computerSelection.titleCase}! \n\nPlayer: ${playerScore} \nComputer: ${computerScore}`), round++) : (alert(`Round ${round}\n\nYou lose! ${computerSelection} beats ${playerSelection}! \n\nPlayer: ${playerScore} \nComputer: ${computerScore}`), round++);
 			}
+
 			playRound(playerSelection, computerSelection);
 
-			if(playerScore === 5){
+			if(playerScore === 3){
 				alert("Player 1 Wins!");
-			}else if(computerScore === 5){
+			}else if(computerScore === 3){
 				alert("Computer Wins!");
 			}
 		}
