@@ -9,7 +9,8 @@
 	function game(){
 		let computerScore = 0;
 		let playerScore = 0;
-		while(computerScore != 5 || playerScore != 5){
+		while( !(computerScore === 5 || playerScore === 5)){
+			console.log(computerScore);
 			function computerPlay(){
 				let pick = Math.floor(Math.random() * 3);
 				let choice;
@@ -28,11 +29,15 @@
 				return choice;
 			}
 
-			const computerSelection = computerPlay();
-			const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+			const computerSelection = 'scissors';
+			let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+
+			if(playerSelection.slice(playerSelection.length - 1) === " "){
+				playerSelection = playerSelection.substr(0, playerSelection.length - 1);
+			}
 
 			function playRound(playerSelection, computerSelection){
-				let outcome;
+				let outcome = true;
 
 				if(playerSelection === computerSelection){
 					return alert("It's a draw!");
@@ -54,6 +59,8 @@
 					}else if(computerSelection === 'rock'){
 						outcome = false;
 					}
+				}else{
+					return alert("That's not a valid option!! Play Again!");
 				}
 
 				(outcome === true) ? playerScore += 1 : computerScore += 1;
@@ -61,18 +68,16 @@
 				(outcome === true) ? alert(`You win! ${playerSelection} beats ${computerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`) : alert(`You lose! ${computerSelection} beats ${playerSelection}! \n\nPlayer: ${playerScore} Computer: ${computerScore}`);
 			}
 			playRound(playerSelection, computerSelection);
-			
+
 			if(playerScore === 5){
-				alert("Player 1 wins!");
-				break;
+				alert("Player 1 Wins!");
 			}else if(computerScore === 5){
-				alert("Computer wins!");
-				break;
+				alert("Computer Wins!");
 			}
 		}
 		alert("Good Game!");
 	}
-
+	
 	game();
 
 	</script>
